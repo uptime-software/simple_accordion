@@ -1,15 +1,16 @@
 
+
 # simple_accordion
 <table>
+<tr>
+<td><img src="https://raw.githubusercontent.com/parsadoc/simple_accordion/dev/screenshots/record.gif" alt="img-1" /></td>
+<td><img src="https://raw.githubusercontent.com/parsadoc/simple_accordion/dev/screenshots/4.png" alt="img-1" /></td>
+<td><img src="https://raw.githubusercontent.com/parsadoc/simple_accordion/dev/screenshots/6.png" alt="img-1" /></td>
+</tr>
 <tr>
 <td><img src="https://raw.githubusercontent.com/parsadoc/simple_accordion/dev/screenshots/1.png" alt="img-1" /></td>
 <td><img src="https://raw.githubusercontent.com/parsadoc/simple_accordion/dev/screenshots/2.png" alt="img-1" /></td>
 <td><img src="https://raw.githubusercontent.com/parsadoc/simple_accordion/dev/screenshots/3.png" alt="img-1" /></td>
-</tr>
-<tr>
-<td><img src="https://raw.githubusercontent.com/parsadoc/simple_accordion/dev/screenshots/4.png" alt="img-1" /></td>
-<td><img src="https://raw.githubusercontent.com/parsadoc/simple_accordion/dev/screenshots/5.png" alt="img-1" /></td>
-<td><img src="https://raw.githubusercontent.com/parsadoc/simple_accordion/dev/screenshots/6.png" alt="img-1" /></td>
 </tr>
 </table>
 
