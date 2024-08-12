@@ -67,7 +67,7 @@ class _AccordionItem extends State<AccordionItem> {
             widget.title!,
             style: widget.itemTextStyle ??
                 TextStyle(
-                    color: Theme.of(context).textTheme.headline1?.color,
+                    color: Theme.of(context).textTheme.displayLarge?.color,
                     fontSize: 13),
           ),
           trailing: widget.accrodionItemType == AccrodionItemType.CheckBox
