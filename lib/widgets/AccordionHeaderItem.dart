@@ -13,7 +13,14 @@ class AccordionHeaderItem extends StatefulWidget {
       this.index = 0,
       this.headerTextStyle,
       this.itemTextStyle,
-      this.itemColor})
+      this.itemColor,
+      this.separatorColor,
+      this.separatorSize,
+      this.iconColor,
+      this.icon,
+      this.headerPadding,
+      this.headerBorderRadius,
+      this.spacing})
       : assert(title != null || child != null),
         super(key: key);
 
@@ -38,11 +45,34 @@ class AccordionHeaderItem extends StatefulWidget {
   /// if you're using title instead of child in AccordionItem
   TextStyle? itemTextStyle;
 
+  /// set the color of separator line
+  Color? separatorColor;
+
+  /// set the size of separator line
+  double? separatorSize;
+
+  /// set the color of chevron icon
+  Color? iconColor;
+
+  /// set a custom icon instead of chevron icon
+  Icon? icon;
+
+  /// set padding of header
+  EdgeInsetsGeometry? headerPadding;
+
+  /// set border radius of header
+  BorderRadiusGeometry? headerBorderRadius;
+
+  /// set spacing between headers
+  double? spacing;
+
   @override
   State<StatefulWidget> createState() => _AccordionHeaderItem();
 }
 
 class _AccordionHeaderItem extends State<AccordionHeaderItem> {
+  final Color defaultColor = const Color(0xffd4d4d4);
+
   late bool isOpen;
 
   @override
@@ -60,28 +90,42 @@ class _AccordionHeaderItem extends State<AccordionHeaderItem> {
           isOpen = !isOpen;
         });
       },
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-        decoration: BoxDecoration(
-            border: const Border(
-              bottom: BorderSide(width: 1, color: Color(0xffe6e6e6)),
+      child: ClipRRect(
+        borderRadius: widget.headerBorderRadius ?? BorderRadius.zero,
+        child: Container(
+          margin: EdgeInsets.only(top: widget.spacing ?? 0),
+          padding: widget.headerPadding ??
+              const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+          decoration: BoxDecoration(
+            color: widget.headerColor,
+            border: Border(
+              bottom: BorderSide(
+                color: widget.separatorColor ?? defaultColor,
+                width: widget.separatorSize ?? 1,
+              ),
             ),
-            color: widget.headerColor),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            widget.child ??
-                Text(
-                  widget.title!,
-                  style: widget.headerTextStyle,
-                ),
-            Icon(
-              isOpen
-                  ? Icons.keyboard_arrow_up_outlined
-                  : Icons.keyboard_arrow_down_outlined,
-              color: const Color(0xffd4d4d4),
-            )
-          ],
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Expanded(
+                child: widget.child ??
+                    Text(
+                      widget.title!,
+                      style: widget.headerTextStyle,
+                    ),
+              ),
+              widget.icon ??
+                  Icon(
+                    isOpen
+                        ? Icons.keyboard_arrow_up_outlined
+                        : Icons.keyboard_arrow_down_outlined,
+                    color: widget.iconColor ?? defaultColor,
+                  )
+            ],
+          ),
         ),
       ),
     );
