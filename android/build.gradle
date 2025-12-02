@@ -2,15 +2,14 @@ group 'com.parsa.simple_accordion'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.6.10'
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.android.tools.build:gradle:8.1.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0"
     }
 }
 
@@ -21,18 +20,12 @@ allprojects {
     }
 }
 
-subprojects{
-    afterEvaluate {
-        android {
-            namespace 'com.parsa.simple_accordion'
-        }
-    }
-}
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 31
+    namespace 'com.parsa.simple_accordion'
+    compileSdk 34
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -48,6 +41,6 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 16
+        minSdk 21
     }
 }
